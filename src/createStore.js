@@ -56,6 +56,12 @@ module.exports = function(definition) {
 
     var store = new Store();
     Keep.createdStores.push(store);
+  
+    store.clean = function () {
+        Keep.createdStores = Keep.createdStores.filter(function (item) {
+          return item !== store;
+        });
+    };
 
     return store;
 };

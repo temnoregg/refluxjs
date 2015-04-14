@@ -57,6 +57,12 @@ var createAction = function(definition) {
     _.extend(functor,childActions,context);
 
     Keep.createdActions.push(functor);
+  
+    functor.clean = function () {
+        Keep.createdActions= Keep.createdActions.filter(function (item) {
+          return item !== functor;
+        });
+    };
 
     return functor;
 
